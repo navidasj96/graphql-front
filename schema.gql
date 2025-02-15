@@ -1,0 +1,58 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreatePostInput {
+  body: String!
+  title: String!
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+type Mutation {
+  addRecipe(newRecipeData: NewRecipeInput!): Recipe!
+  createPost(createPostInput: CreatePostInput!): Post!
+  reactionPost(id: Int!, reaction: Float!): Post!
+  removePost(id: Int!): Post!
+  removeRecipe(id: String!): Boolean!
+  updatePost(updatePostInput: UpdatePostInput!): Post!
+}
+
+input NewRecipeInput {
+  description: String
+  ingredients: [String!]!
+  title: String!
+}
+
+type Post {
+  body: String!
+  id: Int!
+  likes: Float!
+  title: String!
+}
+
+type Query {
+  post(id: Int!): Post!
+  posts: [Post!]!
+  recipe(id: String!): Recipe!
+  recipes(skip: Int! = 0, take: Int! = 25): [Recipe!]!
+}
+
+"""recipe"""
+type Recipe {
+  creationDate: Date!
+  description: String
+  id: ID!
+  ingredients: [String!]!
+}
+
+type Subscription {
+  recipeAdded: Recipe!
+}
+
+input UpdatePostInput {
+  body: String
+  id: Int!
+  title: String
+}

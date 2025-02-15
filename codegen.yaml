@@ -1,0 +1,8 @@
+schema: http://localhost:5010/graphql # Your GraphQL API endpoint
+documents: './src/**/*.graphql' # Path to your GraphQL queries/mutations
+generates:
+  ./src/types/generated.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-query
